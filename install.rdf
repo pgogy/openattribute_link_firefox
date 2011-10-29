@@ -3,7 +3,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 	<Description about="urn:mozilla:install-manifest">
-		<em:id>openattribute_link@pgogy.org</em:id>
+		<em:id>ffcc_new@pgogy.org</em:id>
 		<em:name>OA Linky winky twinky dinky</em:name>
 		<em:version>1.0</em:version>
 		<em:type>2</em:type>

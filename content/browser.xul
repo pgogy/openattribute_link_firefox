@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?xml-stylesheet href="chrome://openattribute_link/content/browser.css" type="text/css"?>
 
 <!-- Setup UI augmentations -->
 <overlay id="openattrib_browser"
@@ -10,10 +11,10 @@
 	
   <toolbox id="navigator-toolbox">
 	
-	<toolbar id="OA-Toolbar" toolbarname="Tutorial Toolbar" class="chromeclass-toolbar" context="toolbar-context-menu" hidden="false" persist="hidden">
+	<toolbar id="OA-Toolbar" toolbarname="OA Toolbar" class="chromeclass-toolbar" context="toolbar-context-menu" hidden="false" persist="hidden">
 	
 		<toolbarbutton id="OA-Web-Button" tooltiptext="Open Attribute"
-               label="Open Attribute Check" oncommand="page_process.init(content.document);" />
+            oncommand="page_process.init(content.document);" />
 
 	
 	</toolbar>

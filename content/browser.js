@@ -53,6 +53,8 @@ var page_process = new function page_process() {
 				
 					if(n.hasAttribute("href")){
 					
+						alert("got link");
+					
 						if(n.href.indexOf("google")==-1){
 					
 							check_url(n.href,n);
