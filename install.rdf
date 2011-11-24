@@ -3,20 +3,18 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 
 	<Description about="urn:mozilla:install-manifest">
-		<em:id>ffcc_new@pgogy.org</em:id>
-		<em:name>OA Linky winky twinky dinky</em:name>
-		<em:version>1.0</em:version>
+		<em:id>pat@openattribute.com</em:id>
+		<em:name>Openattribute link</em:name>
+		<em:version>0.2</em:version>
 		<em:type>2</em:type>
-		<em:creator>Robert Nyman</em:creator>
-		<em:description>Finds links that have a target attribute</em:description>
-		<em:homepageURL>http://www.robertnyman.com/</em:homepageURL>
-		<em:optionsURL>chrome://openattribute_link/content/options.xul</em:optionsURL>
-
+		<em:creator>Open Attribute</em:creator>
+		<em:description>Searches links for licenced content</em:description>
+		<em:homepageURL>http://openattribute.com/</em:homepageURL>
 		<em:targetApplication>
-			<Description>
+			<Description>	
 				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 				<em:minVersion>2.0</em:minVersion>
-				<em:maxVersion>5.*</em:maxVersion>
+				<em:maxVersion>8.*</em:maxVersion>
 			</Description>
 		</em:targetApplication>
 	</Description>      

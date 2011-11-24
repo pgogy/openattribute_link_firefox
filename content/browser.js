@@ -1,3 +1,12 @@
+function contains(a, obj) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function check_url(url,node_to_change){
 
 	var xmlHttpRequest = new XMLHttpRequest();
@@ -10,20 +19,49 @@ function check_url(url,node_to_change){
 			var myregexp_fat = new RegExp('rel="license" href="http://creativecommons.org/licenses/',"i");	
 			var myregexp_thin = new RegExp("Creative Commons","i");	
 		
-			if(xmlHttpRequest.responseText.match(myregexp_fat)){
+			if(node_to_change.innerHTML.indexOf("(&copy;")==-1){
+		
+				if(xmlHttpRequest.responseText.match(myregexp_fat)){
+										
+					node_to_change.style.color="#00FF00";
+					if(node_to_change.innerHTML.indexOf("<img")==-1){
+					
+						node_to_change.innerHTML += " (&copy; &#10003;)";
+						
+					}else{
+					
+						node_to_change.style.border = "2px solid #00ff00";
+					
+					}
+								
+				}else if(xmlHttpRequest.responseText.match(myregexp_thin)){
+									
+					node_to_change.style.color="#AAAA66";
+					
+					if(node_to_change.innerHTML.indexOf("<img")==-1){
+					
+						node_to_change.innerHTML += " (&copy; ?)";
+						
+					}else{
+					
+						node_to_change.style.border = "2px solid #00ff00";
+					
+					}
+				
+				}else{
+									
+					if(node_to_change.innerHTML.indexOf("<img")==-1){
+					
+						node_to_change.innerHTML += " (&copy;)";
+						
+					}else{
+					
+						node_to_change.style.border = "2px solid #00ff00";
+					
+					}
+				
+				}
 			
-				node_to_change.style.border="2px solid #00FF00";			
-				node_to_change.style.fontWeight="bold";
-			
-			}else if(xmlHttpRequest.responseText.match(myregexp_thin)){
-			
-				node_to_change.style.border="2px solid #FFFF00";			
-				node_to_change.style.fontWeight="bold";
-			
-			}else{
-
-				node_to_change.style.border="2px solid #FF0000";			
-
 			}
 						
 		}
@@ -35,7 +73,9 @@ function check_url(url,node_to_change){
 
 }
 
-var document_node = "";
+var open_attribute_link = new Object;
+open_attribute_link.document_node = "";
+open_attribute_link.urls_checked = new Array();
 
 var page_process = new function page_process() {
 
@@ -43,7 +83,7 @@ var page_process = new function page_process() {
 				
 			var n = content_passed;			
 			
-			document_node = content_passed;
+			open_attribute_link.document_node = content_passed;
 									
 			var rootNode = n;
 			
@@ -53,11 +93,14 @@ var page_process = new function page_process() {
 				
 					if(n.hasAttribute("href")){
 					
-						alert("got link");
-					
 						if(n.href.indexOf("google")==-1){
 					
-							check_url(n.href,n);
+							if(!contains(open_attribute_link.urls_checked,n.href)){
+					
+								check_url(n.href,n);
+								open_attribute_link.urls_checked.push(n.href);
+							
+							}
 							
 						}
 						
@@ -78,23 +121,21 @@ var page_process = new function page_process() {
 					}
 				}
 				else {
+					
 					if (n.firstChild) {
 						n.v = true;
 						n = n.firstChild;
+					}else if (n.nextSibling) {
+						n = n.nextSibling;
+					}else {
+						n = n.parentNode;
 					}
-					else 
-						if (n.nextSibling) {
-							n = n.nextSibling;
-						}
-						else {
-							n = n.parentNode;
-						}
 				}
 				
 			}
 			
-			urls_found = new Array();
-
+			open_attribute_link.urls_checked = new Array();
+			
 		}; 
 		
 };
