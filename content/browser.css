@@ -1,3 +1,7 @@
-#OA-Web-Button {
+#OpenAttributeLink {
   list-style-image: url("chrome://openattribute_link/content/label.png");
+}
+
+#OpenAttributeLinkCustom {
+  list-style-image: url("chrome://openattribute_link/content/customlabel.png");
 }

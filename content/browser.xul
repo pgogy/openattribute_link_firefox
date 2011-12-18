@@ -9,16 +9,22 @@
   <script type="text/javascript"
 	  src="chrome://openattribute_link/content/browser.js"></script>
 	
-  <toolbox id="navigator-toolbox">
+  <toolbox id="navigator-toolbox">           
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="OpenAttributeLinkCustom"
+                       label="OpenAttribute"
+                       oncommand="page_process.init(content.document);"
+                       tooltiptext="Open Attribute Link Check"/>               
+	</toolbarpalette>
 	
-	<toolbar id="OA-Toolbar" toolbarname="OA Toolbar" class="chromeclass-toolbar" context="toolbar-context-menu" hidden="false" persist="hidden">
+	<toolbar id="OpenAttribute-Toolbar" toolbarname="Open Attribute Link Toolbar" class="chromeclass-toolbar" context="toolbar-context-menu" hidden="false" persist="hidden">
 	
-		<toolbarbutton id="OA-Web-Button" tooltiptext="Open Attribute"
+		<toolbarbutton id="OpenAttributeLink" tooltiptext="Open Attribute"
             oncommand="page_process.init(content.document);" />
 
 	
 	</toolbar>
-
+	
   </toolbox>
   
 </overlay>

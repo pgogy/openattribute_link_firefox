@@ -1,83 +1,83 @@
-function contains(a, obj) {
-    for (var i = 0; i < a.length; i++) {
-        if (a[i] === obj) {
-            return true;
-        }
-    }
-    return false;
-}
-
-function check_url(url,node_to_change){
-
-	var xmlHttpRequest = new XMLHttpRequest();
-
-	xmlHttpRequest.open("GET",url, true);
-	xmlHttpRequest.onreadystatechange=function(){
-	      
-		if (xmlHttpRequest.readyState==4){
-					
-			var myregexp_fat = new RegExp('rel="license" href="http://creativecommons.org/licenses/',"i");	
-			var myregexp_thin = new RegExp("Creative Commons","i");	
-		
-			if(node_to_change.innerHTML.indexOf("(&copy;")==-1){
-		
-				if(xmlHttpRequest.responseText.match(myregexp_fat)){
-										
-					node_to_change.style.color="#00FF00";
-					if(node_to_change.innerHTML.indexOf("<img")==-1){
-					
-						node_to_change.innerHTML += " (&copy; &#10003;)";
-						
-					}else{
-					
-						node_to_change.style.border = "2px solid #00ff00";
-					
-					}
-								
-				}else if(xmlHttpRequest.responseText.match(myregexp_thin)){
-									
-					node_to_change.style.color="#AAAA66";
-					
-					if(node_to_change.innerHTML.indexOf("<img")==-1){
-					
-						node_to_change.innerHTML += " (&copy; ?)";
-						
-					}else{
-					
-						node_to_change.style.border = "2px solid #00ff00";
-					
-					}
-				
-				}else{
-									
-					if(node_to_change.innerHTML.indexOf("<img")==-1){
-					
-						node_to_change.innerHTML += " (&copy;)";
-						
-					}else{
-					
-						node_to_change.style.border = "2px solid #00ff00";
-					
-					}
-				
-				}
-			
-			}
-						
-		}
-	
-			
-	};
-					
-	xmlHttpRequest.send();
-
-}
-
 var open_attribute_link = new Object;
 open_attribute_link.document_node = "";
 open_attribute_link.urls_checked = new Array();
 
 var page_process = new function page_process() {
+
+		this.contains = function(a, obj) {
+			for (var i = 0; i < a.length; i++) {
+				if (a[i] === obj) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		this.check_url = function(url,node_to_change){
+
+			var xmlHttpRequest = new XMLHttpRequest();
+
+			xmlHttpRequest.open("GET",url, true);
+			xmlHttpRequest.onreadystatechange=function(){
+				  
+				if (xmlHttpRequest.readyState==4){
+							
+					var myregexp_fat = new RegExp('rel="license" href="http://creativecommons.org/licenses/',"i");	
+					var myregexp_thin = new RegExp("Creative Commons","i");	
+				
+					if(node_to_change.innerHTML.indexOf("(&copy;")==-1){
+				
+						if(xmlHttpRequest.responseText.match(myregexp_fat)){
+												
+							node_to_change.style.color="#00FF00";
+							if(node_to_change.innerHTML.indexOf("<img")==-1){
+							
+								node_to_change.innerHTML += " (&copy; &#10003;)";
+								
+							}else{
+							
+								node_to_change.style.border = "2px solid #00ff00";
+							
+							}
+										
+						}else if(xmlHttpRequest.responseText.match(myregexp_thin)){
+											
+							node_to_change.style.color="#AAAA66";
+							
+							if(node_to_change.innerHTML.indexOf("<img")==-1){
+							
+								node_to_change.innerHTML += " (&copy; ?)";
+								
+							}else{
+							
+								node_to_change.style.border = "2px solid #00ff00";
+							
+							}
+						
+						}else{
+											
+							if(node_to_change.innerHTML.indexOf("<img")==-1){
+							
+								node_to_change.innerHTML += " (&copy;)";
+								
+							}else{
+							
+								node_to_change.style.border = "2px solid #00ff00";
+							
+							}
+						
+						}
+					
+					}
+								
+				}
+			
+					
+			};
+							
+			xmlHttpRequest.send();
+
+		}
 
 		this.init = function (content_passed) {
 				
@@ -95,9 +95,9 @@ var page_process = new function page_process() {
 					
 						if(n.href.indexOf("google")==-1){
 					
-							if(!contains(open_attribute_link.urls_checked,n.href)){
+							if(!this.contains(open_attribute_link.urls_checked,n.href)){
 					
-								check_url(n.href,n);
+								this.check_url(n.href,n);
 								open_attribute_link.urls_checked.push(n.href);
 							
 							}

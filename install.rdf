@@ -5,9 +5,10 @@
 	<Description about="urn:mozilla:install-manifest">
 		<em:id>pat@openattribute.com</em:id>
 		<em:name>Openattribute link</em:name>
-		<em:version>0.2</em:version>
+		<em:version>0.4</em:version>
 		<em:type>2</em:type>
 		<em:creator>Open Attribute</em:creator>
+		<em:creator>Pgogy</em:creator>
 		<em:description>Searches links for licenced content</em:description>
 		<em:homepageURL>http://openattribute.com/</em:homepageURL>
 		<em:targetApplication>
