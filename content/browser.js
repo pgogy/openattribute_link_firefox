@@ -2,7 +2,7 @@ var open_attribute_link = new Object;
 open_attribute_link.document_node = "";
 open_attribute_link.urls_checked = new Array();
 
-var page_process = new function page_process() {
+var open_attribute_link_page_process = new function open_attribute_link_page_process() {
 
 		this.contains = function(a, obj) {
 			for (var i = 0; i < a.length; i++) {

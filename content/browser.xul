@@ -20,7 +20,7 @@
 	<toolbar id="OpenAttribute-Toolbar" toolbarname="Open Attribute Link Toolbar" class="chromeclass-toolbar" context="toolbar-context-menu" hidden="false" persist="hidden">
 	
 		<toolbarbutton id="OpenAttributeLink" tooltiptext="Open Attribute"
-            oncommand="page_process.init(content.document);" />
+            oncommand="open_attribute_link_page_process.init(content.document);" />
 
 	
 	</toolbar>
